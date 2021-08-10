@@ -1,0 +1,26 @@
+{
+  "name": "a17-toolkit",
+  "version": "1.0.0",
+  "description": "",
+  "main": "webpack.mix.js",
+  "dependencies": {
+    "@area17/a17-helpers": "^2.0.0",
+    "body-scroll-lock": "^4.0.0-beta.0",
+    "focus-trap": "^6.6.0",
+    "tailwindcss": "^2.2.7"
+  },
+  "devDependencies": {
+    "laravel-mix": "^6.0.27"
+  },
+  "scripts": {
+    "dev": "npm run development",
+    "development": "mix",
+    "watch": "mix watch",
+    "watch-poll": "mix watch -- --watch-options-poll=1000",
+    "hot": "mix watch --hot",
+    "prod": "npm run production",
+    "production": "mix --production"
+  },
+  "author": "",
+  "license": "ISC"
+}

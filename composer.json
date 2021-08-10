@@ -1,0 +1,20 @@
+{
+  "name": "area17/a17-toolkit",
+  "type": "library",
+  "description": "Your package description goes here",
+  "keywords": ["components","ui"],
+  "homepage": "https://area17.com",
+  "license": "MIT",
+  "autoload": {
+      "psr-4": {
+          "A17Toolkit\\": "src"
+      }
+  },
+  "extra": {
+      "laravel": {
+          "providers": [
+              "A17Toolkit\\A17ToolkitServiceProvider"
+          ]
+      }
+  }
+}
