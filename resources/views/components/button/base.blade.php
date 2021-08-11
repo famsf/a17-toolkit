@@ -1,5 +1,4 @@
 @props([
-    'variation' => 'primary',
     'icon' => false,
     'iconPosition' => 'after',
     'href' => false,

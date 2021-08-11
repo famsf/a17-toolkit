@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
 use Illuminate\View\Compilers\BladeCompiler;
+use Illuminate\Support\Facades\Route;
 
 final class A17ToolkitServiceProvider extends ServiceProvider
 {
@@ -21,13 +22,23 @@ final class A17ToolkitServiceProvider extends ServiceProvider
     {
         $this->bootResources();
         $this->bootBladeComponents();
+        $this->bootRoutes();
         // $this->bootDirectives();
         // $this->bootPublishing();
+        $this->publishes([
+            __DIR__.'/../public' => public_path('a17-toolkit'),
+        ], 'public');
+
     }
 
     private function bootResources(): void
     {
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'a17-toolkit');
+    }
+
+    private function bootRoutes(): void
+    {
+        $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
     }
 
     private function bootBladeComponents(): void

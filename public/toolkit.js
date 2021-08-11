@@ -486,23 +486,6 @@ var purgeProperties = function(obj) {
 
 /***/ }),
 
-/***/ "./resources/frontend/js/app.js":
-/*!**************************************!*\
-  !*** ./resources/frontend/js/app.js ***!
-  \**************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _area17_a17_helpers_src_utility_manageBehaviors__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @area17/a17-helpers/src/utility/manageBehaviors */ "./node_modules/@area17/a17-helpers/src/utility/manageBehaviors.js");
-/* harmony import */ var _behaviors__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./behaviors */ "./resources/frontend/js/behaviors/index.js");
-
-
-document.addEventListener('DOMContentLoaded', function () {
-  (0,_area17_a17_helpers_src_utility_manageBehaviors__WEBPACK_IMPORTED_MODULE_0__.default)(_behaviors__WEBPACK_IMPORTED_MODULE_1__);
-});
-
-/***/ }),
-
 /***/ "./resources/frontend/js/behaviors/Modal.js":
 /*!**************************************************!*\
   !*** ./resources/frontend/js/behaviors/Modal.js ***!
@@ -683,6 +666,23 @@ var removeListener = function removeListener(arr, func) {
 };
 
 
+
+/***/ }),
+
+/***/ "./resources/frontend/js/toolkit.js":
+/*!******************************************!*\
+  !*** ./resources/frontend/js/toolkit.js ***!
+  \******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _area17_a17_helpers_src_utility_manageBehaviors__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @area17/a17-helpers/src/utility/manageBehaviors */ "./node_modules/@area17/a17-helpers/src/utility/manageBehaviors.js");
+/* harmony import */ var _behaviors__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./behaviors */ "./resources/frontend/js/behaviors/index.js");
+
+
+document.addEventListener('DOMContentLoaded', function () {
+  (0,_area17_a17_helpers_src_utility_manageBehaviors__WEBPACK_IMPORTED_MODULE_0__.default)(_behaviors__WEBPACK_IMPORTED_MODULE_1__);
+});
 
 /***/ }),
 
@@ -1625,10 +1625,10 @@ var createFocusTrap = function createFocusTrap(elements, userOptions) {
 
 /***/ }),
 
-/***/ "./resources/frontend/css/app.css":
-/*!****************************************!*\
-  !*** ./resources/frontend/css/app.css ***!
-  \****************************************/
+/***/ "./resources/frontend/css/toolkit.css":
+/*!********************************************!*\
+  !*** ./resources/frontend/css/toolkit.css ***!
+  \********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -1975,8 +1975,8 @@ var isFocusable = function isFocusable(node, options) {
 /******/ 		// undefined = chunk not loaded, null = chunk preloaded/prefetched
 /******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
 /******/ 		var installedChunks = {
-/******/ 			"/public/js/app": 0,
-/******/ 			"public/css/app": 0
+/******/ 			"/public/toolkit": 0,
+/******/ 			"public/toolkit": 0
 /******/ 		};
 /******/ 		
 /******/ 		// no chunk on demand loading
@@ -2024,8 +2024,8 @@ var isFocusable = function isFocusable(node, options) {
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	__webpack_require__.O(undefined, ["public/css/app"], () => (__webpack_require__("./resources/frontend/js/app.js")))
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["public/css/app"], () => (__webpack_require__("./resources/frontend/css/app.css")))
+/******/ 	__webpack_require__.O(undefined, ["public/toolkit"], () => (__webpack_require__("./resources/frontend/js/toolkit.js")))
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["public/toolkit"], () => (__webpack_require__("./resources/frontend/css/toolkit.css")))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
 /******/ })()
