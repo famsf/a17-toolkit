@@ -78,14 +78,9 @@
     @endif
 
     @if(isset($caption) && !empty($caption))
-        @if(isset($mediaCaption) && !$mediaCaption->isEmpty())
-            @dd($mediaCaption)
-            {{ $mediaCaption }}
-        @else
-            <figcaption class="mt-12 lg:mt-16">
-                {!! $caption !!}
-            </figcaption>
-        @endif
+        <figcaption {{ $mediaCaption->attributes ?? null }}>
+            {{ isset($mediaCaption) && !$mediaCaption->isEmpty() ? $mediaCaption : $caption }}
+        </figcaption>
     @endif
 </{{ $element() }}>
 

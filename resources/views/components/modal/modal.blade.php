@@ -1,26 +1,20 @@
-@props([
-    'id' => null,
-    'showClose' => true, // set to false if you want to use a custom close button in the slot. Note that attributes will need to be the same as the one here
-    'title' => null, // leave null if you want to use a custom h1 in the slot. Note that attributes will need to be the same as the one here
-])
-
 <div
     id="{{ $id }}"
     role="dialog"
     aria-labelledby="{{ $id .'_title' }}"
     aria-modal="true"
     data-behavior="Modal"
-    {{ $attributes->class([ 'g-modal fixed inset-0 z-900 bg-tertiary text-primary trans-show-hide' ]) }}
+    {{ $attributes->class([ 'g-modal a17-fixed a17-inset-0 a17-z-900 a17-bg-white a17-text-black a17-trans-show-hide' ]) }}
 >
     <div
-        class="relative h-full overflow-scroll"
+        class="a17-relative a17-h-full a17-overflow-scroll"
         data-Modal-focus-trap
         tabindex="-1"
     >
         @if($showClose)
             <button
-                class="absolute top-16 left-0"
-                aria-label="{{ __('fe.a11y.modal_close', 'Close Modal') }}"
+                class="a17-absolute a17-top-16 a17-right-16"
+                aria-label="{{ __('a17-toolkit::fe.a11y.modal_close') }}"
                 data-Modal-close-trigger
             >
                 <x-icon name="close-24" />

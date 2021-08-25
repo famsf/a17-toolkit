@@ -68,7 +68,7 @@ const Modal = createBehavior(
             });
 
             this._data.isActive = false;
-            this._data.activeClasses = ['trans-show-hide--active'];
+            this._data.activeClasses = ['a17-trans-show-hide--active'];
 
             if (this.$closeButtons) {
                 addListener(this.$closeButtons, this.close);

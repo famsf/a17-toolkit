@@ -23,8 +23,9 @@ final class A17ToolkitServiceProvider extends ServiceProvider
         $this->bootResources();
         $this->bootBladeComponents();
         $this->bootRoutes();
-        // $this->bootDirectives();
-        // $this->bootPublishing();
+        $this->bootDirectives();
+        $this->bootPublishing();
+        $this->bootTranslations();
         $this->publishes([
             __DIR__.'/../public' => public_path('a17-toolkit'),
         ], 'public');
@@ -39,6 +40,11 @@ final class A17ToolkitServiceProvider extends ServiceProvider
     private function bootRoutes(): void
     {
         $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
+    }
+
+    public function bootTranslations()
+    {
+        $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'a17-toolkit');
     }
 
     private function bootBladeComponents(): void
@@ -89,13 +95,26 @@ final class A17ToolkitServiceProvider extends ServiceProvider
     private function bootPublishing(): void
     {
         if ($this->app->runningInConsole()) {
+            // config
             $this->publishes([
                 __DIR__.'/../config/a17-toolkit.php' => $this->app->configPath('a17-toolkit.php'),
             ], 'a17-toolkit-config');
 
+            // views
             $this->publishes([
                 __DIR__.'/../resources/views' => $this->app->resourcePath('views/vendor/a17-toolkit'),
             ], 'a17-toolkit-views');
+
+            // assets
+            $this->publishes([
+                    __DIR__.'/../public' => public_path('a17-toolkit')
+                ], 'a17-toolkit-assets'
+            );
+
+            // translations
+            $this->publishes([
+                __DIR__.'/../resources/lang' => $this->app->resourcePath('lang/vendor/a17-toolkit'),
+            ], 'a17-toolkit-translations');
         }
     }
 }

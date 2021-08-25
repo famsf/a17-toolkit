@@ -1,5 +1,3 @@
-@props(['name' => null])
-
 {{--
     No Icon name set.
 

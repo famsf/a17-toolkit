@@ -16,6 +16,10 @@ const {
 
 module.exports = {
     prefix: 'a17-',
+    purge: [
+      './resources/frontend/js/**/*.js',
+      './resources/views/**/*.php',
+    ],
     corePlugins: {
       preflight: false,
         // container: false
