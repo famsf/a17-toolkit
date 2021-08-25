@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace A17Toolkit\Components\Button;
 
-use A17Toolkit\Components\BladeComponent;
+use Illuminate\View\Component;
 use Illuminate\Contracts\View\View;
 
-class Button extends BladeComponent
+class Button extends Component
 {
     /** @var boolean */
     public $static;

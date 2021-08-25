@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace A17Toolkit\Components\Icon;
 
-use A17Toolkit\Components\BladeComponent;
+use Illuminate\View\Component;
 use Illuminate\Contracts\View\View;
 
-class Icon extends BladeComponent
+class Icon extends Component
 {
     /** @var string */
     public $name;

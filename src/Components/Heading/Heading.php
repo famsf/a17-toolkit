@@ -4,12 +4,10 @@ declare(strict_types=1);
 
 namespace A17Toolkit\Components\Heading;
 
-use A17Toolkit\Components\BladeComponent;
+use Illuminate\View\Component;
 use Illuminate\Contracts\View\View;
-use Illuminate\Support\Arr;
-use Illuminate\Support\Str;
 
-class Heading extends BladeComponent
+class Heading extends Component
 {
     /** @var string */
     public $caption;

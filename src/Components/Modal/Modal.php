@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace A17Toolkit\Components\Modal;
 
-use A17Toolkit\Components\BladeComponent;
+use Illuminate\View\Component;
 use Illuminate\Contracts\View\View;
 
-class Modal extends BladeComponent
+class Modal extends Component
 {
     /** @var boolean */
     public $id;

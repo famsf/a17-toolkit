@@ -5,11 +5,10 @@ declare(strict_types=1);
 namespace A17Toolkit;
 
 use A17Toolkit\Components\BladeComponent;
+use A17Toolkit\Commands\Publish;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Support\Str;
 use Illuminate\View\Compilers\BladeCompiler;
-use Illuminate\Support\Facades\Route;
 
 final class A17ToolkitServiceProvider extends ServiceProvider
 {
@@ -26,6 +25,7 @@ final class A17ToolkitServiceProvider extends ServiceProvider
         $this->bootDirectives();
         $this->bootPublishing();
         $this->bootTranslations();
+        $this->bootCommands();
         $this->publishes([
             __DIR__.'/../public' => public_path('a17-toolkit'),
         ], 'public');
@@ -47,38 +47,25 @@ final class A17ToolkitServiceProvider extends ServiceProvider
         $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'a17-toolkit');
     }
 
+    private function bootCommands(): void
+    {
+        if ($this->app->runningInConsole()) {
+            $this->commands([
+                Publish::class,
+            ]);
+        }
+    }
+
     private function bootBladeComponents(): void
     {
         $this->callAfterResolving(BladeCompiler::class, function (BladeCompiler $blade) {
             $prefix = config('a17-toolkit.prefix', '');
-            $assets = config('a17-toolkit.assets', []);
 
             /** @var BladeComponent $component */
             foreach (config('a17-toolkit.components', []) as $alias => $component) {
                 $blade->component($component, $alias, $prefix);
-
-                $this->registerAssets($component, $assets);
             }
         });
-    }
-
-    private function registerAssets($component, array $assets): void
-    {
-        foreach ($component::assets() as $asset) {
-            $files = (array) ($assets[$asset] ?? []);
-
-            collect($files)->filter(function (string $file) {
-                return Str::endsWith($file, '.css');
-            })->each(function (string $style) {
-                A17Toolkit::addStyle($style);
-            });
-
-            collect($files)->filter(function (string $file) {
-                return Str::endsWith($file, '.js');
-            })->each(function (string $script) {
-                A17Toolkit::addScript($script);
-            });
-        }
     }
 
     private function bootDirectives(): void
@@ -97,13 +84,8 @@ final class A17ToolkitServiceProvider extends ServiceProvider
         if ($this->app->runningInConsole()) {
             // config
             $this->publishes([
-                __DIR__.'/../config/a17-toolkit.php' => $this->app->configPath('a17-toolkit.php'),
+                __DIR__.'/../config/a17-toolkit.php' => config_path('a17-toolkit.php'),
             ], 'a17-toolkit-config');
-
-            // views
-            $this->publishes([
-                __DIR__.'/../resources/views' => $this->app->resourcePath('views/vendor/a17-toolkit'),
-            ], 'a17-toolkit-views');
 
             // assets
             $this->publishes([
@@ -113,7 +95,7 @@ final class A17ToolkitServiceProvider extends ServiceProvider
 
             // translations
             $this->publishes([
-                __DIR__.'/../resources/lang' => $this->app->resourcePath('lang/vendor/a17-toolkit'),
+                __DIR__.'/../resources/lang' => resource_path('lang/vendor/a17-toolkit'),
             ], 'a17-toolkit-translations');
         }
     }

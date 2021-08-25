@@ -4,12 +4,10 @@ declare(strict_types=1);
 
 namespace A17Toolkit\Components\Wysiwyg;
 
-use A17Toolkit\Components\BladeComponent;
+use Illuminate\View\Component;
 use Illuminate\Contracts\View\View;
-use Illuminate\Support\Arr;
-use Illuminate\Support\Str;
 
-class Wysiwyg extends BladeComponent
+class Wysiwyg extends Component
 {
     public function __construct()
     {
