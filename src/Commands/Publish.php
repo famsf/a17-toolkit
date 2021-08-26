@@ -113,11 +113,10 @@ final class Publish extends Command
                     }
 
                     $originalConfig = $filesystem->get($config);
+                    $fixedComponentClass = str_replace('A17Toolkit\\', '', $component);
+                    $modifiedConfig = str_replace($fixedComponentClass, 'App\\View\\Components\\'.$class, $originalConfig);
 
-                    // $modifiedConfig = str_replace($component, 'App\\View\\Components\\'.$class, $originalConfig);
-                    // $modifiedConfig = str_replace($component, 'App\\View\\Components\\'.$class, $originalConfig);
-
-                    $filesystem->put($config, $originalConfig);
+                    $filesystem->put($config, $modifiedConfig);
                 }
             }
         }
