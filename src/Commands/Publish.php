@@ -63,23 +63,23 @@ final class Publish extends Command
         foreach ($publishComponents as $alias) {
             $component = $allComponents[$alias];
 
-            $class = str_replace('A17Toolkit\\Components\\', '', Str::ucfirst($component));
-            $view = str_replace(['_', '.-'], ['-', '/'], Str::snake(str_replace('\\', '.', $class)));
+            $class = str_replace(['A17Toolkit\\Components\\', 'App\\View\\Components\\'], '', $component);
+            $view = str_replace(['_', '.-'], ['-', '/'], Str::snake(str_replace('\\', '.', $class))).'.blade.php';
 
             if ($this->option('view') || ! $this->option('class')) {
                 $originalView = __DIR__.'/../../resources/views/components/'.$view;
-                $publishedViewDir = $this->laravel->resourcePath('views/vendor/a17-toolkit/components/'.$view);
-                $publishedView = $publishedViewDir .'.blade.php';
+                $publishedView = $this->laravel->resourcePath('views/vendor/a17-toolkit/components/'.$view);
                 $path = Str::beforeLast($publishedView, '/');
+                $filename = Str::afterLast($publishedView, '/');
 
                 if (! $this->option('force') && $filesystem->exists($publishedView) && !$this->confirm("The view at [$publishedView] already exists. Do you wish to overwrite?", false)) {
                     $this->error("The view at [$publishedView] already exists.");
                 }else{
                     $filesystem->ensureDirectoryExists($path);
 
-                    $filesystem->copyDirectory($originalView, $publishedViewDir);
+                    $filesystem->copy($originalView, $publishedView);
 
-                    $this->info("Successfully published the [$component] view!");
+                    $this->info("Successfully published the [$filename] view!");
                 }
             }
 
@@ -88,7 +88,7 @@ final class Publish extends Command
                 $destination = $path.'/'.str_replace('\\', '/', $class).'.php';
 
                 if (! $this->option('force') && $filesystem->exists($destination) && !$this->confirm("The class at [$destination] already exists. Do you wish to overwrite?", false)) {
-                    $this->error("The class at [$destination] already exists.");
+                    $this->error("The class at [$destination] already exists. Skipping");
                 }else{
                     $filesystem->ensureDirectoryExists(Str::beforeLast($destination, '/'));
 
@@ -99,7 +99,7 @@ final class Publish extends Command
 
                     $stub = str_replace(
                         ['{{ namespace }}', '{{ name }}', '{{ parent }}', '{{ alias }}'],
-                        [$namespace, $name, Str::ucfirst($component), $alias],
+                        [$namespace, $name, $component, $alias],
                         $stub,
                     );
 
@@ -114,6 +114,7 @@ final class Publish extends Command
 
                     $originalConfig = $filesystem->get($config);
                     $fixedComponentClass = str_replace('A17Toolkit\\', '', $component);
+
                     $modifiedConfig = str_replace($fixedComponentClass, 'App\\View\\Components\\'.$class, $originalConfig);
 
                     $filesystem->put($config, $modifiedConfig);
