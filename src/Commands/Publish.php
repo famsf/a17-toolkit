@@ -69,15 +69,16 @@ final class Publish extends Command
             if ($this->option('view') || ! $this->option('class')) {
                 $originalView = __DIR__.'/../../resources/views/components/'.$view;
                 $publishedView = $this->laravel->resourcePath('views/vendor/a17-toolkit/components/'.$view);
-                $path = Str::beforeLast($publishedView, '/');
+                $originalPath = Str::beforeLast($originalView, '/');
+                $publishedPath = Str::beforeLast($publishedView, '/');
                 $filename = Str::afterLast($publishedView, '/');
 
                 if (! $this->option('force') && $filesystem->exists($publishedView) && !$this->confirm("The view at [$publishedView] already exists. Do you wish to overwrite?", false)) {
                     $this->error("The view at [$publishedView] already exists.");
                 }else{
-                    $filesystem->ensureDirectoryExists($path);
+                    $filesystem->ensureDirectoryExists($publishedPath);
 
-                    $filesystem->copy($originalView, $publishedView);
+                    $filesystem->copyDirectory($originalPath, $publishedPath);
 
                     $this->info("Successfully published the [$filename] view!");
                 }
