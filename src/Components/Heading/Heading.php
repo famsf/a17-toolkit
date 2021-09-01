@@ -12,9 +12,17 @@ class Heading extends Component
     /** @var string */
     public $caption;
 
-    public function __construct($caption = null)
+    /** @var int */
+    public $level;
+
+    /** @var string */
+    public $element;
+
+    public function __construct($caption = null, $level = null)
     {
         $this->caption = $caption;
+        $this->level = $level;
+        $this->element = $this->getElement();
     }
 
     public function render(): View
@@ -22,4 +30,7 @@ class Heading extends Component
         return view('a17-toolkit::components.heading.heading');
     }
 
+    protected function getElement(){
+        return $this->level > 0 && $this->level <= 6 ? "h$this->level" : 'span';
+    }
 }

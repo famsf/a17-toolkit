@@ -1,5 +1,3 @@
-@props(['level' => 1])
-
-<h{{ $level }} {{ $attributes }}>
+<{{ $element }} {{ $attributes }}>
     {{ $slot }}
-</h{{ $level }}>
+</{{ $element }}>
