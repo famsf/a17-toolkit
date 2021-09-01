@@ -1,0 +1,12 @@
+.a17-accordion__trigger {
+  @apply  a17-flex
+          a17-justify-between
+          a17-w-full
+          a17-py-4;
+}
+
+.a17-accordion__content {
+  @apply  a17-h-0
+          a17-overflow-hidden
+          a17-transition-all;
+}

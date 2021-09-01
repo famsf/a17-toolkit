@@ -15,6 +15,8 @@ return [
     */
 
     'components' => [
+        'accordion' => Components\Accordion\Accordion::class,
+        'alert' => Components\Alert\Alert::class,
         'button' => Components\Button\Button::class,
         'heading' => Components\Heading\Heading::class,
         'icon' => Components\Icon\Icon::class,
@@ -52,7 +54,7 @@ return [
     |
     */
 
-    'prefix' => '',
+    'prefix' => 'a17',
 
     /*
     |--------------------------------------------------------------------------
