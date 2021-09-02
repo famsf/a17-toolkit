@@ -4,33 +4,35 @@
     aria-labelledby="{{ $id .'_title' }}"
     aria-modal="true"
     data-behavior="Modal"
-    {{ $attributes->class([ 'g-modal a17-fixed a17-inset-0 a17-z-900 a17-bg-white a17-text-black a17-trans-show-hide' ]) }}
+    {{ $attributes->class([ 'a17-modal' ]) }}
 >
     <div
-        class="a17-relative a17-h-full a17-overflow-scroll"
+        class="a17-modal__wrapper"
         data-Modal-focus-trap
         tabindex="-1"
     >
-        @if($showClose)
+        @if (isset($closeButton) && !$closeButton->isEmpty())
+            {{ $closeButton }}
+        @elseif($showClose)
             <button
-                class="a17-absolute a17-top-16 a17-right-16"
+                class="a17-modal__close"
                 aria-label="{{ __('a17-toolkit::fe.a11y.modal_close') }}"
                 data-Modal-close-trigger
             >
-                <x-icon name="close-24" />
+                <x-a17-icon name="close-24" />
             </button>
         @endif
 
         @isset($title)
-            <x-heading
+            <x-a17-heading
                 :level="1"
                 id="{{ $id }}_title"
-                class="sr-only"
+                class="a17-sr-only"
                 tabindex="-1"
                 data-Modal-initial-focus
             >
                 {{ $title }}
-            </x-heading>
+            </x-a17-heading>
         @endisset
 
         {!! $slot !!}

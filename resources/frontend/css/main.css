@@ -2,15 +2,5 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
-
 @import '@components/accordion/accordion.css';
-
-.a17-trans-show-hide {
-  @apply a17-opacity-0 a17-invisible a17-pointer-events-none;
-  transition: opacity 200ms ease-in-out, visibility 0s 200ms ease-in-out;
-}
-
-.a17-trans-show-hide--active {
-  @apply a17-opacity-100 a17-visible a17-pointer-events-auto;
-  transition: opacity 200ms ease-in-out;
-}
+@import '@components/modal/modal.css';

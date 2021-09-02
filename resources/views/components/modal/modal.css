@@ -1,0 +1,20 @@
+.a17-modal {
+    @apply  a17-fixed
+            a17-inset-0
+            a17-z-900
+            a17-bg-white
+            a17-text-black
+            a17-trans-show-hide;
+}
+
+.a17-modal__wrapper {
+    @apply  a17-relative
+            a17-h-full
+            a17-overflow-scroll;
+}
+
+.a17-modal__close {
+    @apply  a17-absolute
+            a17-top-16
+            a17-right-16;
+}
