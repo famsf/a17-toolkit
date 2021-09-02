@@ -49,7 +49,7 @@ module.exports = {
           '.trans-show-hide--active': {
             opacity: 1,
             visibility: 'visible',
-            'pointer-events': 'normal',
+            'pointer-events': 'all',
             transition: 'opacity 200ms ease-in-out'
           },
         }
