@@ -22,7 +22,7 @@ return [
         'icon' => Components\Icon\Icon::class,
         'media' => Components\Media\Media::class,
         'modal' => Components\Modal\Modal::class,
-        'nav-global' => Components\NavGlobal\NavGlobal::class,
+        'nav-global' => Components\Navigation\NavGlobal::class,
         'wysiwyg' => Components\Wysiwyg\Wysiwyg::class,
     ],
 
