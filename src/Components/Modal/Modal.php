@@ -26,8 +26,6 @@ class Modal extends Component
 
     public function __construct($id = null, $showClose = true, $title = false)
     {
-        // dd($icon);
-
         $this->id = $id;
         $this->showClose = $showClose;
         $this->title = $title;

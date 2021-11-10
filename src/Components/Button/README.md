@@ -1,8 +1,6 @@
 This is a basic button component. It renders an `a`, `span` or `button` depending on the props (see below) passed to the component.
 
-The base button component renders without any styling classes, these should be added when using the button in your own component library.
-
-Any attributes passed to the button base component are merged with the components existing attributes to allow you to add ids, behaviors, data attributes, etc to the component as you wish.
+Any attributes passed to the button base component are merged with the component's existing attributes to allow you to add ids, behaviors, data attributes, etc to the component as you wish.
 
 ## Props
 
