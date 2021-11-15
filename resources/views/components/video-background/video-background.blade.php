@@ -1,11 +1,11 @@
 @isset($sources)
     <div
-        {{ $attributes->class('a-video-background') }}
+        {{ $attributes->class(['relative', 'overflow-hidden', 'w-full', 'h-full']) }}
         data-behavior="VideoBackground"
         data-VideoBackground-text-pause="{{ __('a17-toolkit::fe.video_pause') }}"
         data-VideoBackground-text-play="{{ __('a17-toolkit::fe.video_play') }}"
     >
-        <div class="a-video-background__controls" data-VideoBackground-controls="">
+        <div class="absolute z-2 bottom-0 right-0" data-VideoBackground-controls="">
             @if (isset($pauseButton) && !$pauseButton->isEmpty())
                 {{ $pauseButton }}
             @else
@@ -13,7 +13,6 @@
                     aria-label="{{ __('a17-toolkit::fe.video_pause') }}"
                     aria-pressed="false"
                     name="pauseButton"
-                    data-VideoBackground-controls=""
                 >
                     {{ __('a17-toolkit::fe.video_pause') }}
                 </button>
@@ -25,6 +24,7 @@
             autoplay
             loop
             muted
+            class="absolute inset-0 w-full h-full object-cover"
             data-VideoBackground-player=""
         >
             @foreach ($sources as $source)
