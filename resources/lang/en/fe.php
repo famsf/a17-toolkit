@@ -14,7 +14,9 @@ return [
     */
 
     'a11y' => [
-      'modal_close' => 'Close Modal'
-    ]
+      'modal_close' => 'Close Modal',
+    ],
+    'video_pause' => 'Pause Video',
+    'video_play' => 'Play Video'
 
 ];

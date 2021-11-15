@@ -23,6 +23,7 @@ return [
         'media' => Components\Media\Media::class,
         'modal' => Components\Modal\Modal::class,
         'nav-global' => Components\Navigation\NavGlobal::class,
+        'video-background' => Components\VideoBackground\VideoBackground::class,
         'wysiwyg' => Components\Wysiwyg\Wysiwyg::class,
     ],
 
