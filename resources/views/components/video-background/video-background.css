@@ -13,6 +13,8 @@
 }
 
 .a-video-background__controls {
+    --a-video-gutter: 20px;
+
     /* use `top: 100%` minus the gutter as `bottom: 0` breaks the vertical alignment of the icon and text in the button in Chrome */
     position: absolute;
     z-index: 2;

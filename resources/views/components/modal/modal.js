@@ -1,6 +1,5 @@
 import createBehavior from '@area17/a17-helpers/src/utility/createBehavior';
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
-import { addListener, removeListener } from '../functions/listeners';
 import * as focusTrap from 'focus-trap';
 
 const Modal = createBehavior(
@@ -49,6 +48,20 @@ const Modal = createBehavior(
             if (e.target.id === this.$node.id) {
                 this.close(e);
             }
+        },
+
+        addListener(arr, func) {
+            var arrLength = arr.length;
+            for (var i = 0; i < arrLength; i++) {
+                arr[i].addEventListener('click', func, false);
+            }
+        },
+
+        removeListener(arr, func) {
+            var arrLength = arr.length;
+            for (var i = 0; i < arrLength; i++) {
+                arr[i].removeEventListener('click', func);
+            }
         }
     },
     {
@@ -71,7 +84,7 @@ const Modal = createBehavior(
             this._data.activeClasses = ['a17-trans-show-hide--active'];
 
             if (this.$closeButtons) {
-                addListener(this.$closeButtons, this.close);
+                this.addListener(this.$closeButtons, this.close);
             }
 
             this.$node.addEventListener('Modal:toggle', this.toggle, false);
@@ -87,7 +100,7 @@ const Modal = createBehavior(
                 `[data-modal-target="#${modalId}"]`
             );
 
-            addListener(this.$triggers, this.toggle);
+            this.addListener(this.$triggers, this.toggle);
 
             if (this.options['panel']) {
                 this.$node.addEventListener(
@@ -107,7 +120,7 @@ const Modal = createBehavior(
             this.close();
 
             if (this.$closeButtons) {
-                removeListener(this.$closeButtons, this.close);
+                this.removeListener(this.$closeButtons, this.close);
             }
 
             this.$node.removeEventListener('Modal:toggle', this.toggle);
@@ -118,7 +131,7 @@ const Modal = createBehavior(
 
             document.removeEventListener('keyup', this.handleEsc);
 
-            removeListener(this.$triggers, this.toggle);
+            this.removeListener(this.$triggers, this.toggle);
         }
     }
 );

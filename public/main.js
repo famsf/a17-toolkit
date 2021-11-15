@@ -486,10 +486,48 @@ var purgeProperties = function(obj) {
 
 /***/ }),
 
-/***/ "./resources/frontend/js/behaviors/Accordion.js":
-/*!******************************************************!*\
-  !*** ./resources/frontend/js/behaviors/Accordion.js ***!
-  \******************************************************/
+/***/ "./resources/frontend/js/behaviors/index.js":
+/*!**************************************************!*\
+  !*** ./resources/frontend/js/behaviors/index.js ***!
+  \**************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Accordion": () => (/* reexport safe */ _views_components_accordion_accordion__WEBPACK_IMPORTED_MODULE_0__.default),
+/* harmony export */   "Modal": () => (/* reexport safe */ _views_components_modal_modal__WEBPACK_IMPORTED_MODULE_1__.default),
+/* harmony export */   "VideoBackground": () => (/* reexport safe */ _views_components_video_background_video_background__WEBPACK_IMPORTED_MODULE_2__.default)
+/* harmony export */ });
+/* harmony import */ var _views_components_accordion_accordion__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../views/components/accordion/accordion */ "./resources/views/components/accordion/accordion.js");
+/* harmony import */ var _views_components_modal_modal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../views/components/modal/modal */ "./resources/views/components/modal/modal.js");
+/* harmony import */ var _views_components_video_background_video_background__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../views/components/video-background/video-background */ "./resources/views/components/video-background/video-background.js");
+
+
+
+
+/***/ }),
+
+/***/ "./resources/frontend/js/main.js":
+/*!***************************************!*\
+  !*** ./resources/frontend/js/main.js ***!
+  \***************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _area17_a17_helpers_src_utility_manageBehaviors__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @area17/a17-helpers/src/utility/manageBehaviors */ "./node_modules/@area17/a17-helpers/src/utility/manageBehaviors.js");
+/* harmony import */ var _behaviors__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./behaviors */ "./resources/frontend/js/behaviors/index.js");
+
+
+document.addEventListener('DOMContentLoaded', function () {
+  (0,_area17_a17_helpers_src_utility_manageBehaviors__WEBPACK_IMPORTED_MODULE_0__.default)(_behaviors__WEBPACK_IMPORTED_MODULE_1__);
+});
+
+/***/ }),
+
+/***/ "./resources/views/components/accordion/accordion.js":
+/*!***********************************************************!*\
+  !*** ./resources/views/components/accordion/accordion.js ***!
+  \***********************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -567,10 +605,10 @@ var Accordion = (0,_area17_a17_helpers_src_utility_createBehavior__WEBPACK_IMPOR
 
 /***/ }),
 
-/***/ "./resources/frontend/js/behaviors/Modal.js":
-/*!**************************************************!*\
-  !*** ./resources/frontend/js/behaviors/Modal.js ***!
-  \**************************************************/
+/***/ "./resources/views/components/modal/modal.js":
+/*!***************************************************!*\
+  !*** ./resources/views/components/modal/modal.js ***!
+  \***************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -579,8 +617,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _area17_a17_helpers_src_utility_createBehavior__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @area17/a17-helpers/src/utility/createBehavior */ "./node_modules/@area17/a17-helpers/src/utility/createBehavior.js");
 /* harmony import */ var body_scroll_lock__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! body-scroll-lock */ "./node_modules/body-scroll-lock/lib/bodyScrollLock.esm.js");
-/* harmony import */ var _functions_listeners__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../functions/listeners */ "./resources/frontend/js/functions/listeners.js");
-/* harmony import */ var focus_trap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! focus-trap */ "./node_modules/focus-trap/dist/focus-trap.esm.js");
+/* harmony import */ var focus_trap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! focus-trap */ "./node_modules/focus-trap/dist/focus-trap.esm.js");
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -592,7 +629,6 @@ function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symb
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
 
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
 
 
 
@@ -644,6 +680,20 @@ var Modal = (0,_area17_a17_helpers_src_utility_createBehavior__WEBPACK_IMPORTED_
     if (e.target.id === this.$node.id) {
       this.close(e);
     }
+  },
+  addListener: function addListener(arr, func) {
+    var arrLength = arr.length;
+
+    for (var i = 0; i < arrLength; i++) {
+      arr[i].addEventListener('click', func, false);
+    }
+  },
+  removeListener: function removeListener(arr, func) {
+    var arrLength = arr.length;
+
+    for (var i = 0; i < arrLength; i++) {
+      arr[i].removeEventListener('click', func);
+    }
   }
 }, {
   init: function init() {
@@ -655,14 +705,14 @@ var Modal = (0,_area17_a17_helpers_src_utility_createBehavior__WEBPACK_IMPORTED_
       console.warn('No initial focus element found. Add a `h1` with the attribute `data-Modal-initial-focus`. The `h1` should also have an id that matches the modal id with `_title` appended');
     }
 
-    this._data.focusTrap = focus_trap__WEBPACK_IMPORTED_MODULE_3__.createFocusTrap(this.$focusTrap, {
+    this._data.focusTrap = focus_trap__WEBPACK_IMPORTED_MODULE_2__.createFocusTrap(this.$focusTrap, {
       initialFocus: this.$initialFocus
     });
     this._data.isActive = false;
     this._data.activeClasses = ['a17-trans-show-hide--active'];
 
     if (this.$closeButtons) {
-      (0,_functions_listeners__WEBPACK_IMPORTED_MODULE_2__.addListener)(this.$closeButtons, this.close);
+      this.addListener(this.$closeButtons, this.close);
     }
 
     this.$node.addEventListener('Modal:toggle', this.toggle, false);
@@ -673,7 +723,7 @@ var Modal = (0,_area17_a17_helpers_src_utility_createBehavior__WEBPACK_IMPORTED_
 
     var modalId = this.$node.getAttribute('id');
     this.$triggers = document.querySelectorAll("[data-modal-target=\"#".concat(modalId, "\"]"));
-    (0,_functions_listeners__WEBPACK_IMPORTED_MODULE_2__.addListener)(this.$triggers, this.toggle);
+    this.addListener(this.$triggers, this.toggle);
 
     if (this.options['panel']) {
       this.$node.addEventListener('click', this.handleClickOutside, false);
@@ -688,7 +738,7 @@ var Modal = (0,_area17_a17_helpers_src_utility_createBehavior__WEBPACK_IMPORTED_
     this.close();
 
     if (this.$closeButtons) {
-      (0,_functions_listeners__WEBPACK_IMPORTED_MODULE_2__.removeListener)(this.$closeButtons, this.close);
+      this.removeListener(this.$closeButtons, this.close);
     }
 
     this.$node.removeEventListener('Modal:toggle', this.toggle);
@@ -697,85 +747,10 @@ var Modal = (0,_area17_a17_helpers_src_utility_createBehavior__WEBPACK_IMPORTED_
     this.$node.removeEventListener('click', this.handleClickOutside);
     document.removeEventListener('Modal:closeAll', this.close);
     document.removeEventListener('keyup', this.handleEsc);
-    (0,_functions_listeners__WEBPACK_IMPORTED_MODULE_2__.removeListener)(this.$triggers, this.toggle);
+    this.removeListener(this.$triggers, this.toggle);
   }
 });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Modal);
-
-/***/ }),
-
-/***/ "./resources/frontend/js/behaviors/index.js":
-/*!**************************************************!*\
-  !*** ./resources/frontend/js/behaviors/index.js ***!
-  \**************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "Accordion": () => (/* reexport safe */ _Accordion__WEBPACK_IMPORTED_MODULE_0__.default),
-/* harmony export */   "Modal": () => (/* reexport safe */ _Modal__WEBPACK_IMPORTED_MODULE_1__.default),
-/* harmony export */   "VideoBackground": () => (/* reexport safe */ _components_video_background_video_background__WEBPACK_IMPORTED_MODULE_2__.default)
-/* harmony export */ });
-/* harmony import */ var _Accordion__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Accordion */ "./resources/frontend/js/behaviors/Accordion.js");
-/* harmony import */ var _Modal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Modal */ "./resources/frontend/js/behaviors/Modal.js");
-/* harmony import */ var _components_video_background_video_background__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @components/video-background/video-background */ "./resources/views/components/video-background/video-background.js");
-
-
-
-
-/***/ }),
-
-/***/ "./resources/frontend/js/functions/listeners.js":
-/*!******************************************************!*\
-  !*** ./resources/frontend/js/functions/listeners.js ***!
-  \******************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "addListener": () => (/* binding */ addListener),
-/* harmony export */   "removeListener": () => (/* binding */ removeListener)
-/* harmony export */ });
-var addListener = function addListener(arr, func) {
-  var arrLength = arr.length;
-
-  for (var i = 0; i < arrLength; i++) {
-    arr[i].addEventListener('click', func, false);
-  }
-};
-
-var removeListener = function removeListener(arr, func) {
-  var arrLength = arr.length;
-
-  for (var i = 0; i < arrLength; i++) {
-    arr[i].removeEventListener('click', func);
-  }
-};
-
-
-
-/***/ }),
-
-/***/ "./resources/frontend/js/main.js":
-/*!***************************************!*\
-  !*** ./resources/frontend/js/main.js ***!
-  \***************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _area17_a17_helpers_src_utility_manageBehaviors__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @area17/a17-helpers/src/utility/manageBehaviors */ "./node_modules/@area17/a17-helpers/src/utility/manageBehaviors.js");
-/* harmony import */ var _behaviors__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./behaviors */ "./resources/frontend/js/behaviors/index.js");
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-
-
-document.addEventListener('DOMContentLoaded', function () {
-  (0,_area17_a17_helpers_src_utility_manageBehaviors__WEBPACK_IMPORTED_MODULE_0__.default)(_objectSpread(_objectSpread({}, ToolkitBehaviors), _behaviors__WEBPACK_IMPORTED_MODULE_1__));
-});
 
 /***/ }),
 

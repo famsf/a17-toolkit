@@ -1,6 +1,6 @@
 @isset($sources)
     <div
-        class="a-video-background"
+        {{ $attributes->class('a-video-background') }}
         data-behavior="VideoBackground"
         data-VideoBackground-text-pause="{{ __('a17-toolkit::fe.video_pause') }}"
         data-VideoBackground-text-play="{{ __('a17-toolkit::fe.video_play') }}"

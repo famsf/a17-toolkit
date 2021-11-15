@@ -1,3 +1,3 @@
-export { default as Accordion } from '@components/accordion/accordion';
-export { default as Modal } from '@components/modal/modal';
-export { default as VideoBackground } from '@components/video-background/video-background';
+export { default as Accordion } from '../../../views/components/accordion/accordion';
+export { default as Modal } from '../../../views/components/modal/modal';
+export { default as VideoBackground } from '../../../views/components/video-background/video-background';
