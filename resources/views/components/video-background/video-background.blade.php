@@ -5,7 +5,7 @@
         data-VideoBackground-text-pause="{{ __('a17-toolkit::fe.video_pause') }}"
         data-VideoBackground-text-play="{{ __('a17-toolkit::fe.video_play') }}"
     >
-        <div class="absolute z-2 bottom-0 right-0" data-VideoBackground-controls="">
+        <div {{ $pauseButton->attributes->class(['absolute', 'z-10', 'bottom-0', 'right-0']) }} data-VideoBackground-controls="">
             @if (isset($pauseButton) && !$pauseButton->isEmpty())
                 {{ $pauseButton }}
             @else
