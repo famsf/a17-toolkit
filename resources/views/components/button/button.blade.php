@@ -2,7 +2,6 @@
 $classes = '
     inline-flex justify-center items-center
     text-center
-    align-top
     whitespace-nowrap
     disabled:cursor-default
     group

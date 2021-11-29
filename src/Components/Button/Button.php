@@ -24,12 +24,13 @@ class Button extends Component
     /** @var int */
     public $labelClasses;
 
-    public function __construct($icon = null, $iconPosition = 'after', $static = false, $iconSpacing = 4)
+    public function __construct($icon = null, $iconPosition = 'after', $static = false, $iconSpacing = 4, $labelClasses = null)
     {
         $this->icon = $icon;
         $this->iconPosition = $iconPosition;
         $this->iconSpacing = $iconSpacing;
         $this->static = $static;
+        $this->labelClasses = $labelClasses;
     }
 
     public function render(): View
@@ -73,12 +74,12 @@ class Button extends Component
         $iconPosition = $this->getIconPosition();
 
         if(!$iconPosition){
-            return '';
+            return $this->labelClasses;
         }
 
         $prefix = $iconPosition === 'before' ? 'ml-' : 'mr-';
 
-        return $prefix . $this->iconSpacing;
+        return $this->labelClasses .' '. $prefix . $this->iconSpacing;
     }
 
     protected function getIconPosition()
