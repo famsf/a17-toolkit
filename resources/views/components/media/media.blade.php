@@ -27,7 +27,7 @@
     @endif
 
         @if (array_key_exists('src', $image))
-            <img src="{{ $image['src'] }}" alt="{{ $image['alt'] }}" />
+            <img src="{{ $image['src'] }}" alt="{{ $image['alt'] }}" class="{{ $twillImageClass }}" />
         @elseif (array_key_exists('main', $image))
             {!! TwillImage::fromData($image, [
                 'layout' => 'fullWidth',
