@@ -2,19 +2,19 @@
     <div
         {{ $attributes->class(['relative', 'overflow-hidden', 'w-full', 'h-full']) }}
         data-behavior="VideoBackground"
-        data-VideoBackground-text-pause="{{ __('a17-toolkit::fe.video_pause') }}"
-        data-VideoBackground-text-play="{{ __('a17-toolkit::fe.video_play') }}"
+        data-VideoBackground-text-pause="{{ $pauseText }}"
+        data-VideoBackground-text-play="{{ $playText }}"
     >
         <div {{ $pauseButton->attributes->class(['absolute', 'z-10', 'bottom-0', 'right-0']) }} data-VideoBackground-controls="">
             @if (isset($pauseButton) && !$pauseButton->isEmpty())
                 {{ $pauseButton }}
             @else
                 <button
-                    aria-label="{{ __('a17-toolkit::fe.video_pause') }}"
+                    aria-label="{{ $pauseText }}"
                     aria-pressed="false"
                     name="pauseButton"
                 >
-                    {{ __('a17-toolkit::fe.video_pause') }}
+                    {{ $pauseText }}
                 </button>
             @endif
         </div>

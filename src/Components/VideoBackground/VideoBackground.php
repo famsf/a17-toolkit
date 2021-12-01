@@ -13,8 +13,16 @@ class VideoBackground extends Component
     /** @var array */
     public $sources;
 
-    public function __construct($sources = null)
+    /** @var string */
+    public $pauseText;
+
+    /** @var string */
+    public $playText;
+
+    public function __construct($sources = null, $pauseText = null, $playText = null)
     {
+        $this->pauseText = $pauseText ?? __('a17-toolkit::fe.video_pause');
+        $this->playText = $playText ?? __('a17-toolkit::fe.video_play');
         $this->sources = $sources;
     }
 
