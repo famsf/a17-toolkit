@@ -74,7 +74,7 @@ class Button extends Component
         $iconPosition = $this->getIconPosition();
 
         if(!$iconPosition){
-            return $this->labelClasses;
+            return $this->labelClasses ?? '';
         }
 
         $prefix = $iconPosition === 'before' ? 'ml-' : 'mr-';
