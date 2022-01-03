@@ -1,10 +1,11 @@
 {
   "name": "a17-toolkit",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "webpack.mix.js",
   "dependencies": {
-    "@area17/a17-helpers": "^2.0.0",
+    "@area17/a17-behaviors": "^0.1.9",
+    "@area17/a17-helpers": "^2.1.4",
     "@area17/a17-tailwind-plugins": "^2.1.0",
     "body-scroll-lock": "^4.0.0-beta.0",
     "focus-trap": "^6.6.0",
@@ -13,7 +14,7 @@
   "devDependencies": {
     "@babel/core": "^7.15.0",
     "babel-loader": "^8.2.2",
-    "laravel-mix": "^6.0.27"
+    "laravel-mix": "^6.0.39"
   },
   "scripts": {
     "dev": "npm run development",

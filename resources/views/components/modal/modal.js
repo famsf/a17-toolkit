@@ -1,4 +1,4 @@
-import createBehavior from '@area17/a17-helpers/src/utility/createBehavior';
+import { createBehavior } from '@area17/a17-behaviors';
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
 import * as focusTrap from 'focus-trap';
 
