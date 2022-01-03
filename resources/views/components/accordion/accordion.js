@@ -1,4 +1,4 @@
-import createBehavior from '@area17/a17-helpers/src/utility/createBehavior';
+import { createBehavior } from '@area17/a17-behaviors';
 
 const Accordion = createBehavior(
     'Accordion',
